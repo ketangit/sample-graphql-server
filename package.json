@@ -1,23 +1,26 @@
 {
-  "name": "sample-graphql-server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "nodemon --exec ts-node src/index.ts"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/ws": "^5.1.2",
-    "nodemon": "^1.18.3",
-    "ts-node": "^7.0.0",
-    "tslint": "^5.11.0",
-    "tslint-config-prettier": "^1.14.0",
-    "typescript": "^3.0.1"
-  },
-  "dependencies": {
-    "graphql-yoga": "^1.15.1"
-  }
+    "name": "sample-graphql-server",
+    "version": "1.0.0",
+    "description": "Sample node applicaiton using GraphQL and Vesper framework",
+    "main": "index.js",
+    "private": true,
+    "scripts": {
+        "start": "ts-node src/index.ts"
+    },
+    "devDependencies": {
+        "@types/node": "^8.0.29",
+        "@types/ws": "^5.1.2",
+        "nodemon": "^1.18.3",
+        "ts-node": "3.3.0",
+        "tslint": "^5.11.0",
+        "tslint-config-prettier": "^1.14.0",
+        "typescript": "2.5.2"
+    },
+    "dependencies": {
+        "graphql-iso-date": "^3.5.0",
+        "reflect-metadata": "^0.1.10",
+        "sqlite3": "^3.1.10",
+        "typeorm": "0.2.7",
+        "vesper": "^0.1.9"
+    }
 }
