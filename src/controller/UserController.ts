@@ -23,22 +23,35 @@ export class UserController {
     }
 
     @Query()
-    user({ id }: { id: number }): Promise<User> {
-        return this.entityManager.findOne(User, id);
+    async user({ id }: { id: number }): Promise<User> {
+        const userObj = await this.entityManager.findOne(User, id);
+        if (userObj !== undefined) {
+            return userObj;
+        } else {
+            return new User();
+        }
     }
 
     @Mutation()
     async userSave(args: UserSaveArgs): Promise<User> {
-        const user = args.id ? await this.entityManager.findOne(User, args.id) : new User();
-        user.firstName = args.firstName;
-        user.lastName = args.lastName;
-        return this.entityManager.save(user);
+        const user = await this.entityManager.findOne(User, args.id);
+        if (user !== undefined) {
+            user.firstName = args.firstName;
+            user.lastName = args.lastName;
+            return this.entityManager.save(user);
+        } else {
+            return new User();
+        }
     }
 
     @Mutation()
     async userDelete({ id }: { id: number }): Promise<boolean> {
         const user = await this.entityManager.findOne(User, id);
-        await this.entityManager.remove(user);
-        return true;
+        if (user !== undefined) {
+            await this.entityManager.remove(user);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

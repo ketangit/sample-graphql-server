@@ -1,5 +1,4 @@
 import "reflect-metadata";
-import { createConnection } from "typeorm";
 import { bootstrap } from 'vesper';
 import { GraphQLDate, GraphQLDateTime, GraphQLTime } from 'graphql-iso-date';
 import { User } from "./entity/User";
@@ -21,10 +20,6 @@ bootstrap({
     Time: GraphQLTime,
     DateTime: GraphQLDateTime
   },
-  cors: true,
-  setupContainer: async (container, action) => {
-    const request = action.request;
-  }
 }).then(() => {
   console.log('Your app is up and running on http://localhost:4000. ' +
     'You can use playground in development mode on http://localhost:4000/playground');

@@ -4,10 +4,10 @@
 ```
   npm install -g typeorm
   npm install -g vesper
-  npm install --save-dev typescript tslint tslint-config-prettier @types/ws nodemon ts-node
+  npm install --save-dev typescript tslint tslint-config-prettier @types/ws @types/graphql-iso-date nodemon ts-node
   npm install --save vesper graphql-iso-date
 
-  vesper init --name credit-data-service --typescript
+  vesper init --name sample-graphql-service --typescript
 
   Use for in-memory db  
     typeorm init --database sqlite

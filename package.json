@@ -5,16 +5,24 @@
     "main": "index.js",
     "private": true,
     "scripts": {
+        "build": "npm run build-ts && npm run tslint",
+        "build-ts": "tsc",
+        "tslint": "tslint -c tslint.json -p tsconfig.json",
         "start": "ts-node src/index.ts"
     },
+    "engines": {
+        "node": "8.11.2",
+        "npm": "5.6.0"
+    },
     "devDependencies": {
-        "@types/node": "^8.0.29",
+        "@types/graphql-iso-date": "^3.3.0",
+        "@types/node": "^8.10.25",
         "@types/ws": "^5.1.2",
         "nodemon": "^1.18.3",
-        "ts-node": "3.3.0",
+        "ts-node": "^7.0.1",
         "tslint": "^5.11.0",
         "tslint-config-prettier": "^1.14.0",
-        "typescript": "2.5.2"
+        "typescript": "^3.0.1"
     },
     "dependencies": {
         "graphql-iso-date": "^3.5.0",
