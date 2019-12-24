@@ -1,81 +1,61 @@
-# Sample Typescript Nodejs Server application using GraphQL and Vesper framework
+# Sample Typescript Nodejs Server application using TypeGraphQL, TypeORM and Node-OracleDB
 
-### Steps to create this project:
-
+### Steps to create base TypeScript project without TypeGraphQL, TypeORM and Node-OracleDB
 ```
-  npm install -g typeorm
-  npm install -g vesper
-  npm install --save-dev typescript tslint tslint-config-prettier copyfiles
-  npm install --save-dev @types/node @types/ws @types/graphql-iso-date @types/faker
-  npm install --save sqlite3 vesper graphql-iso-date reflect-metadata faker
+Create a folder 
+  mkdir sample-graphql-server
+  cd sample-graphql-server
+  npm init -> creates package.json
 
-  vesper init --name sample-graphql-service --typescript
+(-D flag is the shortcut for: --save-dev)
+  npm install -D typescript
+  npm install -D tslint
+  npm install express -S
 
-  Use for in-memory db
-    typeorm init --database sqlite
-    npm install --save sqlite3
+Types in TypeScript are files, normally with an extension of .d.ts*, used to provide type information about an API, in our case Express.
+  npm install -D @types/express
 
-  ( create or update tslint.json, tsconfig.json and ormconfig.json )
+Run the following command to generate a 'tsconfig.json' file
+  npx tsc --init --rootDir src --outDir dist --esModuleInterop --resolveJsonModule --lib es6 --module commonjs --allowJs true --noImplicitAny true
+
+Run the following command to generate a 'tslint.json' file
+  .\node_modules\.bin\tslint --init
+
+Create 'index.ts' file which is the start of the server
+  mkdir src
+  cd src
+  index.ts
+
+Add continuious development
+  npm install -D ts-node nodemon
+  npm install -D typescript-tslint-plugin typescript
+  Create 'nodemon.json' file
+
+A Better Way to Manage Configuration Settings in Node.js
+  npm install dotenv
+  
+Creating production builds
+  npm install -D rimraf
+```
+
+### Steps to add TypeGraphQL dependecies
+```
+  npm install graphql 
+  npm install -D type-graphql
+  npm install reflect-metadata
 ```
 
 ### Steps to run this project locally:
-
 1. Run `npm install` command to install dependencies
 2. Run `npm run build` command to build application
-3. Run `npm start` command to run application locally
+3. Run `npm run start-dev` command to run application locally
 4. Open http://localhost:4000/playground
 
-```
-Preload inital data for testing
-  typeorm migration:create -n import-users
-  typeorm migration:run
-```
-
-```graphql
-# 1. Add few users
-mutation UserSaveBulkMutation {
-  johny: userSave(firstName: "Johny", lastName: "Walker") {
-    id
-  }
-  linda: userSave(firstName: "Linda", lastName: "Smith") {
-    id
-  }
-}
-
-# 2. List all users
-query UserListQuery {
-  users {
-    id
-    firstName
-    lastName
-  }
-}
-query UserListQuery {
-  users(limit: 5, offset: 3) {
-    id
-    firstName
-    lastName
-  }
-}
-
-# 3. Get user by id
-query UserByIdQuery {
-  user(id: 1) {
-    # insert user id here
-    id
-    firstName
-    lastName
-  }
-}
-
-# 4. Delete users by id
-mutation UserDeleteById {
-  userDelete(id: 1)
-}
-```
-
 ### Credit / Prior Art
-
 - https://github.com/Microsoft/TypeScript-Node-Starter
-- https://github.com/vesper-framework
-- http://typeorm.io
+- https://github.com/MichalLytek/type-graphql
+- https://github.com/typeorm/typeorm
+- https://www.npmjs.com/package/typeorm-model-generator
+- https://github.com/oracle/node-oracledb
+- https://khalilstemmler.com/blogs/typescript/node-starter-project/
+- https://scotch.io/tutorials/setting-up-a-node-project-with-typescript

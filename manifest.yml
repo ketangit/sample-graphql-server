@@ -1,6 +1,0 @@
----
-applications:
-- name: sample-graphql-server
-  buildpack: nodejs_buildpack_beta
-  path: .
-  command: node ./dist/index.js

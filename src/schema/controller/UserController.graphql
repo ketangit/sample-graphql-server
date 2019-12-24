@@ -1,9 +1,0 @@
-type Query {
-  users(limit: Int, offset: Int): [User]
-  user(id: Int): User
-}
-
-type Mutation {
-  userSave(firstName: String, lastName: String): User
-  userDelete(id: Int): Boolean
-}
