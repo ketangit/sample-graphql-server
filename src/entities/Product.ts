@@ -1,5 +1,4 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-
 import { Inventory } from "./Inventory";
 import { OrderItem } from "./OrderItem";
 import { ProductCategory } from "./ProductCategory";

@@ -1,5 +1,4 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
-
 import { Location } from "./Location";
 import { Region } from "./Region";
 

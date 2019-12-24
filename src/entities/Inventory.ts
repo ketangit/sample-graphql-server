@@ -1,5 +1,4 @@
 import { Column, Entity, JoinColumn, ManyToOne } from "typeorm";
-
 import { Product } from "./Product";
 import { Warehouse } from "./Warehouse";
 

@@ -1,5 +1,4 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-
 import { Customer } from "./Customer";
 import { Employee } from "./Employee";
 import { OrderItem } from "./OrderItem";

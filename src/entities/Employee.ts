@@ -1,5 +1,4 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-
 import { OrderEntry } from "./OrderEntry";
 
 @Entity("EMPLOYEE")
