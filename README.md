@@ -7,12 +7,9 @@ Create a folder
   cd sample-graphql-server
   npm init -> creates package.json
 
-(-D flag is the shortcut for: --save-dev)
-  npm install -D typescript
+  npm install -D typescript (-D flag is the shortcut for: --save-dev)
   npm install -D tslint
   npm install express -S
-
-Types in TypeScript are files, normally with an extension of .d.ts*, used to provide type information about an API, in our case Express.
   npm install -D @types/express
 
 Run the following command to generate a 'tsconfig.json' file
@@ -49,7 +46,7 @@ Creating production builds
 1. Run `npm install` command to install dependencies
 2. Run `npm run build` command to build application
 3. Run `npm run start-dev` command to run application locally
-4. Open http://localhost:4000/playground
+4. Open http://localhost:3000
 
 ### Credit / Prior Art
 - https://github.com/Microsoft/TypeScript-Node-Starter
