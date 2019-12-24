@@ -30,11 +30,12 @@
     index.ts
 ```
 
-### Steps to add TypeGraphQL dependecies
+### Steps to add TypeGraphQL and TypeORM dependecies
 ```
     npm install graphql 
     npm install -D type-graphql
     npm install reflect-metadata
+    npm install typeorm
 ```
 
 ### Steps to run this project locally:

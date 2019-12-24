@@ -13,8 +13,8 @@
 -- grant priviledges
 --------------------------------------------------------------------
 
--- create new user
+-- create new user, login as SYSTEM
 CREATE USER ATP_USER IDENTIFIED BY <choose-secure-password>;
 
--- grant priviledges if Oracle is running locally on docker container
+-- grant priviledges, login as SYSTEM
 GRANT CONNECT, RESOURCE, DBA TO ATP_USER;

@@ -2,9 +2,9 @@
   {	
     "host": "192.168.1.100",	
     "port": 1521,
-    "databaseName": "ORCLPDB",
+    "databaseName": "ORCLPWD", 
     "user": "ATP_USER",	
-    "password": "Sample6356283",	
+    "password": "changeme",	
     "databaseType": "oracle",	
     "schemaName": "",	
     "ssl": false	
@@ -15,13 +15,13 @@
     "convertCaseFile": "pascal",	
     "convertCaseEntity": "pascal",	
     "convertCaseProperty": "pascal",	
-    "propertyVisibility": "none",	
+    "propertyVisibility": "public",	
     "lazy": false,	
     "activeRecord": false,	
     "generateConstructor": false,	
     "customNamingStrategyPath": "",	
     "relationIds": false,	
-    "strictMode": true,	
+    "strictMode": false,	
     "skipSchema": false	
   }	
 ]
