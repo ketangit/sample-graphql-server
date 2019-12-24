@@ -1,16 +1,16 @@
 [	
   {	
     "host": "192.168.1.100",	
-    "port": 1521,	
-    "databaseName": "",	
+    "port": 1521,
+    "databaseName": "ORCLPDB",
     "user": "ATP_USER",	
-    "password": "",	
+    "password": "Sample6356283",	
     "databaseType": "oracle",	
     "schemaName": "",	
     "ssl": false	
   },	
   {	
-    "resultsPath": "C:\\dev\\sample-node-oracledb\\sample-graphql-server\\db-model-gen\\dist",	
+    "resultsPath": "./dist",	
     "noConfigs": false,	
     "convertCaseFile": "pascal",	
     "convertCaseEntity": "pascal",	
