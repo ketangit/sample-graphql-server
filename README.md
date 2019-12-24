@@ -1,38 +1,33 @@
 # Sample Typescript Nodejs Server application using TypeGraphQL, TypeORM and Node-OracleDB
 
-### Steps to create base TypeScript project without TypeGraphQL, TypeORM and Node-OracleDB
+### Steps to create base TypeScript project
 ```
-Create a folder 
-  mkdir sample-graphql-server
-  cd sample-graphql-server
-  npm init -> creates package.json
+1. Create a folder 
+   mkdir sample-graphql-server
+   cd sample-graphql-server
+   npm init -> creates package.json
 
+2. Install node modules
   npm install -D typescript (-D flag is the shortcut for: --save-dev)
   npm install -D tslint
   npm install express -S
   npm install -D @types/express
-
-Run the following command to generate a 'tsconfig.json' file
-  npx tsc --init --rootDir src --outDir dist --esModuleInterop --resolveJsonModule --lib es6 --module commonjs --allowJs true --noImplicitAny true
-
-Run the following command to generate a 'tslint.json' file
-  .\node_modules\.bin\tslint --init
-
-Create 'index.ts' file which is the start of the server
-  mkdir src
-  cd src
-  index.ts
-
-Add continuious development
-  npm install -D ts-node nodemon
+  npm install -D ts-node nodemon (Create 'nodemon.json' file)
   npm install -D typescript-tslint-plugin typescript
-  Create 'nodemon.json' file
-
-A Better Way to Manage Configuration Settings in Node.js
   npm install dotenv
-  
-Creating production builds
   npm install -D rimraf
+  
+3. Run the following command to generate a 'tsconfig.json' file
+   npx tsc --init --rootDir src --outDir dist --esModuleInterop --resolveJsonModule \
+   --lib es6 --module commonjs --allowJs true --noImplicitAny true
+
+4. Run the following command to generate a 'tslint.json' file
+   .\node_modules\.bin\tslint --init
+
+5. Create 'index.ts' file which is the start of the server
+   mkdir src
+   cd src
+   index.ts
 ```
 
 ### Steps to add TypeGraphQL dependecies
