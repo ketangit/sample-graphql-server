@@ -1,24 +1,19 @@
+import { Field, ID, ObjectType } from "type-graphql";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Product } from "./Product";
 
 @Entity("PRODUCT_CATEGORY")
+@ObjectType()
 export class ProductCategory {
-  @PrimaryGeneratedColumn({
-    type: "number",
-    name: "CATEGORY_ID"
-  })
+  @Field((type) => ID)
+  @PrimaryGeneratedColumn({ type: "number", name: "CATEGORY_ID" })
   public CategoryId: number;
 
-  @Column("varchar2", {
-    nullable: false,
-    name: "CATEGORY_NAME"
-  })
+  @Field((type) => String)
+  @Column("varchar2", { nullable: false, name: "CATEGORY_NAME" })
   public CategoryName: string;
 
-  @OneToMany(
-    () => Product,
-    (Products: Product) => Products.Category,
-    { onDelete: "CASCADE" }
-  )
+  @Field((type) => [Product])
+  @OneToMany(() => Product, (Products: Product) => Products.Category, { onDelete: "CASCADE" })
   public Products: Product[];
 }

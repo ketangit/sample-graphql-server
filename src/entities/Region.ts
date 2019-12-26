@@ -1,25 +1,19 @@
+import { Field, ID, ObjectType } from "type-graphql";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Country } from "./Country";
 
 @Entity("REGION")
+@ObjectType()
 export class Region {
-  @PrimaryGeneratedColumn({
-    type: "number",
-    name: "REGION_ID"
-  })
+  @Field((type) => ID)
+  @PrimaryGeneratedColumn({ type: "number", name: "REGION_ID" })
   public RegionId: number;
 
-  @Column("varchar2", {
-    nullable: false,
-    length: 50,
-    name: "REGION_NAME"
-  })
+  @Field((type) => String)
+  @Column("varchar2", { nullable: false, length: 50, name: "REGION_NAME" })
   public RegionName: string;
 
-  @OneToMany(
-    () => Country,
-    (Countries: Country) => Countries.Region,
-    { onDelete: "CASCADE" }
-  )
+  @Field((type) => [Country])
+  @OneToMany(() => Country, (Countries: Country) => Countries.Region, { onDelete: "CASCADE" })
   public Countrys: Country[];
 }

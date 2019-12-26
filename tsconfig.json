@@ -75,5 +75,12 @@
         "name": "typescript-tslint-plugin"
       }
     ]
-  }
+  },
+  "include": [
+      "src/**/*"
+  ],
+  "exclude": [
+      "node_modules",
+      "**/*.spec.ts"
+  ]
 }
