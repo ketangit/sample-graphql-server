@@ -7,9 +7,9 @@
 4. Create schema and add some fake data:  `schema.sql`, `data.sql`
 5. To drop everything run sql script:     `drop.sql`
 
-### Steps if Oracle Database is running in Oracle Cloud
+### Steps if Oracle Database is running in Oracle Cloud (ATP - Autonomous Transaction Processing)
 1. Install VS Code plugin `Oracle Developer Tools for VS Code`
-2: Create new `TNS Alias` oracle connection Conneciton Type: TNS Alias, TNS Admin location. TNS Alias, Use Wallet File
+2. Create new `TNS Alias` oracle connection Conneciton Type: TNS Alias, TNS Admin location. TNS Alias, Use Wallet File
 3. Create database user:                  `create_user_oracle_cloud.sql`
 4. Create schema and add some fake data:  `schema.sql`, `data.sql`
 5. To drop everything run sql script:     `drop.sql`
