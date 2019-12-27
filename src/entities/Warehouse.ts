@@ -1,7 +1,6 @@
 import { Field, ID, ObjectType } from "type-graphql";
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Inventory } from "./Inventory";
-import { Location } from "./Location";
+import { Inventory, Location } from "./index";
 
 @Entity("WAREHOUSE")
 @ObjectType()
@@ -15,10 +14,11 @@ export class Warehouse {
   public WarehouseName: string | null;
 
   @Field((type) => Location, { nullable: true })
-  @ManyToOne(() => Location, (Locations: Location) => Locations.Warehouses, { onDelete: "CASCADE" }) @JoinColumn({ name: "LOCATION_ID" })
+  @ManyToOne(() => Location, (Locations: Location) => Locations.Warehouses,
+    { onDelete: "CASCADE", lazy: true }) @JoinColumn({ name: "LOCATION_ID" })
   public Location: Location | null;
 
   @Field((type) => [Inventory])
-  @OneToMany(() => Inventory, (Inventories: Inventory) => Inventories.Warehouse, { onDelete: "CASCADE" })
+  @OneToMany((type) => Inventory, (inventories) => inventories.Warehouse, { onDelete: "CASCADE", lazy: true })
   public Inventorys: Inventory[];
 }

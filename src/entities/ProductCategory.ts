@@ -1,6 +1,6 @@
 import { Field, ID, ObjectType } from "type-graphql";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Product } from "./Product";
+import { Product } from "./index";
 
 @Entity("PRODUCT_CATEGORY")
 @ObjectType()
@@ -14,6 +14,6 @@ export class ProductCategory {
   public CategoryName: string;
 
   @Field((type) => [Product])
-  @OneToMany(() => Product, (Products: Product) => Products.Category, { onDelete: "CASCADE" })
+  @OneToMany((type) => Product, (products) => products.Category, { onDelete: "CASCADE", lazy: true })
   public Products: Product[];
 }

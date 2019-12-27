@@ -1,8 +1,6 @@
 import { Field, ID, Int, ObjectType } from "type-graphql";
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Inventory } from "./Inventory";
-import { OrderItem } from "./OrderItem";
-import { ProductCategory } from "./ProductCategory";
+import { Inventory, OrderItem, ProductCategory } from "./index";
 
 @Entity("PRODUCT")
 @ObjectType()
@@ -28,15 +26,15 @@ export class Product {
   public Description: string | null;
 
   @Field((type) => ProductCategory, { nullable: true })
-  @ManyToOne(() => ProductCategory, (ProductCategories: ProductCategory) => ProductCategories.Products,
-    { nullable: false, onDelete: "CASCADE" }) @JoinColumn({ name: "CATEGORY_ID" })
+  @ManyToOne((type) => ProductCategory, (productCategories) => productCategories.Products,
+    { nullable: false, onDelete: "CASCADE", lazy: true }) @JoinColumn({ name: "CATEGORY_ID" })
   public Category: ProductCategory | null;
 
   @Field((type) => [Inventory])
-  @OneToMany(() => Inventory, (Inventories: Inventory) => Inventories.Product, { onDelete: "CASCADE" })
+  @OneToMany((type) => Inventory, (inventories) => inventories.Product, { onDelete: "CASCADE", lazy: true })
   public Inventorys: Inventory[];
 
   @Field((type) => [OrderItem])
-  @OneToMany(() => OrderItem, (OrderItems: OrderItem) => OrderItems.Product, { onDelete: "CASCADE" })
+  @OneToMany((type) => OrderItem, (orderItems) => orderItems.Product, { onDelete: "CASCADE", lazy: true })
   public OrderItems: OrderItem[];
 }

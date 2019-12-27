@@ -1,6 +1,6 @@
 import { Field, ID, ObjectType } from "type-graphql";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Country } from "./Country";
+import { Country } from "./index";
 
 @Entity("REGION")
 @ObjectType()
@@ -14,6 +14,6 @@ export class Region {
   public RegionName: string;
 
   @Field((type) => [Country])
-  @OneToMany(() => Country, (Countries: Country) => Countries.Region, { onDelete: "CASCADE" })
+  @OneToMany((type) => Country, (countries) => countries.Region, { onDelete: "CASCADE", lazy: true })
   public Countrys: Country[];
 }

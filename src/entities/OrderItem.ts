@@ -1,7 +1,6 @@
 import { Field, Int, ObjectType } from "type-graphql";
 import { Column, Entity, JoinColumn, ManyToOne } from "typeorm";
-import { OrderEntry } from "./OrderEntry";
-import { Product } from "./Product";
+import { OrderEntry, Product } from "./index";
 
 @Entity("ORDER_ITEM")
 @ObjectType()
@@ -18,12 +17,12 @@ export class OrderItem {
   public Quantity: number;
 
   @Field((type) => OrderEntry, { nullable: true })
-  @ManyToOne(() => OrderEntry, (OrderEntries: OrderEntry) => OrderEntries.OrderItems,
-    { primary: true, nullable: false, onDelete: "CASCADE" }) @JoinColumn({ name: "ORDER_ID" })
+  @ManyToOne((type) => OrderEntry, (orderEntries) => orderEntries.OrderItems,
+    { primary: true, nullable: false, onDelete: "CASCADE", lazy: true }) @JoinColumn({ name: "ORDER_ID" })
   public Order: OrderEntry | null;
 
   @Field((type) => Product, { nullable: true })
-  @ManyToOne(() => Product, (Products: Product) => Products.OrderItems,
-    { nullable: false, onDelete: "CASCADE" }) @JoinColumn({ name: "PRODUCT_ID" })
+  @ManyToOne((type) => Product, (products) => products.OrderItems,
+    { nullable: false, onDelete: "CASCADE", lazy: true }) @JoinColumn({ name: "PRODUCT_ID" })
   public Product: Product | null;
 }

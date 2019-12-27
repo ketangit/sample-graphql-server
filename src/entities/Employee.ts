@@ -1,6 +1,6 @@
 import { Field, ID, ObjectType } from "type-graphql";
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { OrderEntry } from "./OrderEntry";
+import { OrderEntry } from "./index";
 
 @Entity("EMPLOYEE")
 @ObjectType()
@@ -34,14 +34,15 @@ export class Employee {
   public FirstName: string;
 
   @Field((type) => Employee, { nullable: true })
-  @ManyToOne(() => Employee, (Employees: Employee) => Employees.Employees, { onDelete: "CASCADE" }) @JoinColumn({ name: "MANAGER_ID" })
+  @ManyToOne((type) => Employee, (employees) => employees.Employees,
+    { onDelete: "CASCADE", lazy: true }) @JoinColumn({ name: "MANAGER_ID" })
   public Manager: Employee | null;
 
   @Field((type) => [Employee])
-  @OneToMany(() => Employee, (Employees: Employee) => Employees.Manager, { onDelete: "CASCADE" })
+  @OneToMany((type) => Employee, (employees) => employees.Manager, { onDelete: "CASCADE", lazy: true })
   public Employees: Employee[];
 
   @Field((type) => [OrderEntry])
-  @OneToMany(() => OrderEntry, (OrderEntries: OrderEntry) => OrderEntries.Salesman, { onDelete: "SET NULL" })
+  @OneToMany((type) => OrderEntry, (orderEntries) => orderEntries.Salesman, { onDelete: "SET NULL", lazy: true })
   public OrderEntrys: OrderEntry[];
 }

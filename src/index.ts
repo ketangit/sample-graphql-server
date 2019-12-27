@@ -1,16 +1,40 @@
+import { ApolloServer } from "apollo-server";
 import dotenv from "dotenv";
-import express from "express";
+import "reflect-metadata";
+import { buildSchema } from "type-graphql";
+import { Container } from "typedi";
+import { createConnection, useContainer } from "typeorm";
+import { ContactResolver, CustomerResolver, EmployeeResolver, WarehouseResolver } from "./resolvers";
 
-// initialize configuration
-dotenv.config();
+// register 3rd party IOC container
+useContainer(Container);
 
-const port = process.env.SERVER_PORT;
-const app = express();
+async function bootstrap() {
+  try {
+    // create TypeORM connection
+    await createConnection();
 
-app.get("/", (req, res) => {
-  res.send("Sample GraphQL server");
-});
+    // initialize configuration
+    dotenv.config();
 
-app.listen(port, () => {
-  return console.log(`Server started and is listening on ${port}`);
-});
+    // build TypeGraphQL executable schema
+    const schema = await buildSchema({
+      resolvers: [ContactResolver, CustomerResolver, EmployeeResolver, WarehouseResolver],
+      container: Container
+    });
+
+    const server = new ApolloServer({
+      schema,
+      tracing: false,
+      playground: true
+    });
+
+    server.listen({ port: process.env.SERVER_PORT }).then(({ url }) => {
+      console.log(`GraphQL Server started and available at ${url}`);
+    });
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+bootstrap().catch(console.error);

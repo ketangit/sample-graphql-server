@@ -10,12 +10,12 @@
 2. Install node modules
     npm install -D typescript (-D flag is the shortcut for: --save-dev)
     npm install -D tslint
-    npm install express -S
-    npm install -D @types/express
     npm install -D ts-node nodemon (Create 'nodemon.json' file)
-    npm install -D typescript-tslint-plugin typescript
-    npm install dotenv
+    npm install -D @types/node-fetch
+    npm install -D typescript-tslint-plugin
+    npm install -D typescript
     npm install -D rimraf
+    npm install dotenv
   
 3. Run the following command to generate a 'tsconfig.json' file
     npx tsc --init --rootDir src --outDir dist --esModuleInterop --resolveJsonModule \
@@ -33,9 +33,13 @@
 ### Steps to add TypeGraphQL and TypeORM dependecies
 ```
     npm install graphql 
+    npm install apollo-server
     npm install -D type-graphql
     npm install reflect-metadata
     npm install typeorm
+    npm install oracledb (Oracle Database driver)
+    npm install typedi (Dpendency injection tool for TypeScript)
+    npm install typeorm-typedi-extensions (TypeDI Service container integration with TypeORM)
 ```
 
 ### Steps to run this project locally:

@@ -1,0 +1,16 @@
+[
+  {
+    "name": "default",
+    "type": "oracle",
+    "host": "192.168.1.100",
+    "port": 1521,
+    "username": "ATP_USER",
+    "password": "changeme",
+    "sid": "KPORAPWD",
+    "logging": true,
+    "synchronize": false,
+    "entities": [
+      "src/entities/*.ts"
+    ]
+  }
+]

@@ -1,6 +1,6 @@
 import { Field, ID, ObjectType } from "type-graphql";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Customer } from "./Customer";
+import { Customer } from "./index";
 
 @Entity("CONTACT")
 @ObjectType()
@@ -25,7 +25,8 @@ export class Contact {
   @Column("varchar2", { nullable: false, name: "FIRST_NAME" })
   public FirstName: string;
 
-  @ManyToOne(() => Customer, (Customers: Customer) => Customers.Contacts, { onDelete: "CASCADE" }) @JoinColumn({ name: "CUSTOMER_ID" })
   @Field((type) => Customer, { nullable: true })
+  @ManyToOne((type) => Customer, (customers) => customers.Contacts,
+    { onDelete: "CASCADE", lazy: true }) @JoinColumn({ name: "CUSTOMER_ID" })
   public Customer: Customer | null;
 }

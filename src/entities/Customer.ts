@@ -1,7 +1,6 @@
 import { Field, ID, Int, ObjectType } from "type-graphql";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Contact } from "./Contact";
-import { OrderEntry } from "./OrderEntry";
+import { Contact, OrderEntry } from "./index";
 
 @Entity("CUSTOMER")
 @ObjectType()
@@ -27,10 +26,10 @@ export class Customer {
   public Website: string | null;
 
   @Field((type) => [Contact])
-  @OneToMany(() => Contact, (Contacts: Contact) => Contacts.Customer, { onDelete: "CASCADE" })
+  @OneToMany((type) => Contact, (contacts) => contacts.Customer, { onDelete: "CASCADE", lazy: true })
   public Contacts: Contact[];
 
   @Field((type) => [OrderEntry])
-  @OneToMany(() => OrderEntry, (OrderEntries: OrderEntry) => OrderEntries.Customer, { onDelete: "CASCADE" })
+  @OneToMany((type) => OrderEntry, (orderEntries) => orderEntries.Customer, { onDelete: "CASCADE", lazy: true })
   public OrderEntrys: OrderEntry[];
 }

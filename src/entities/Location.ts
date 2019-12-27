@@ -1,7 +1,6 @@
 import { Field, ID, ObjectType } from "type-graphql";
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Country } from "./Country";
-import { Warehouse } from "./Warehouse";
+import { Country, Warehouse } from "./index";
 
 @Entity("LOCATION")
 @ObjectType()
@@ -27,10 +26,11 @@ export class Location {
   public PostalCode: string | null;
 
   @Field((type) => Country, { nullable: true })
-  @ManyToOne(() => Country, (Countries: Country) => Countries.Locations, { onDelete: "CASCADE" }) @JoinColumn({ name: "COUNTRY_ID" })
+  @ManyToOne((type) => Country, (countries) => countries.Locations,
+    { onDelete: "CASCADE", lazy: true }) @JoinColumn({ name: "COUNTRY_ID" })
   public Country: Country | null;
 
   @Field((type) => [Warehouse])
-  @OneToMany(() => Warehouse, (Warehouses: Warehouse) => Warehouses.Location, { onDelete: "CASCADE" })
+  @OneToMany((type) => Warehouse, (warehouses) => warehouses.Location, { onDelete: "CASCADE", lazy: true })
   public Warehouses: Warehouse[];
 }
