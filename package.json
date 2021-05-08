@@ -35,7 +35,7 @@
     "oracledb": "^4.1.0",
     "reflect-metadata": "^0.1.13",
     "typedi": "^0.8.0",
-    "typeorm": "^0.2.22",
+    "typeorm": "^0.2.25",
     "typeorm-typedi-extensions": "^0.2.3"
   }
 }
